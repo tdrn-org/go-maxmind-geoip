@@ -1,0 +1,6 @@
+package: api
+generate:
+  models: true
+  client: true
+  std-http-server: true
+  strict-server: true
