@@ -22,10 +22,11 @@ var ErrAPIFailure = errors.New("API failure")
 
 // Client instances are used to access the REST API.
 type Client struct {
-	apiURL     *url.URL
-	httpClient *http.Client
-	apiClient  api.ClientWithResponsesInterface
-	logger     *slog.Logger
+	apiURL         *url.URL
+	apiClient      api.ClientWithResponsesInterface
+	httpClient     *http.Client
+	logger         *slog.Logger
+	requestEditors []api.RequestEditorFn
 }
 
 // ClientOption interface is used to set Client options during Client creation.
@@ -58,9 +59,15 @@ func WithLogger(logger *slog.Logger) ClientOptionFunc {
 	}
 }
 
-// NewClient creates a new Client instance using the given
-// connect URL as well as Client options.
-func NewClient(apiURL *url.URL, options ...ClientOption) (*Client, error) {
+// WithRequestEditors sets the [api.RequestEditorFn]s to applied to to each
+// request issued via this Client instance.
+func WithRequestEditors(requestEditors ...api.RequestEditorFn) ClientOptionFunc {
+	return func(client *Client) {
+		client.requestEditors = append(client.requestEditors, requestEditors...)
+	}
+}
+
+func newClient(apiURL *url.URL, options ...ClientOption) (*Client, error) {
 	client := &Client{
 		apiURL: apiURL,
 	}
@@ -81,6 +88,7 @@ func NewClient(apiURL *url.URL, options ...ClientOption) (*Client, error) {
 	return client, nil
 }
 
+// See [api.GetCityWithResponse]
 func (client *Client) GetCity(ctx context.Context, ipAddress api.IPAddress, params *api.GetCityParams, reqEditors ...api.RequestEditorFn) (*api.GetCityResponse, error) {
 	response, err := client.apiClient.GetCityWithResponse(ctx, ipAddress, params, reqEditors...)
 	if err != nil {
@@ -93,6 +101,7 @@ func (client *Client) GetCity(ctx context.Context, ipAddress api.IPAddress, para
 	return response, err
 }
 
+// See [api.GetCountryWithResponse]
 func (client *Client) GetCountry(ctx context.Context, ipAddress api.IPAddress, params *api.GetCountryParams, reqEditors ...api.RequestEditorFn) (*api.GetCountryResponse, error) {
 	response, err := client.apiClient.GetCountryWithResponse(ctx, ipAddress, params, reqEditors...)
 	if err != nil {
@@ -105,6 +114,7 @@ func (client *Client) GetCountry(ctx context.Context, ipAddress api.IPAddress, p
 	return response, err
 }
 
+// See [api.GetInsightsWithResponse]
 func (client *Client) GetInsights(ctx context.Context, ipAddress api.IPAddress, params *api.GetInsightsParams, reqEditors ...api.RequestEditorFn) (*api.GetInsightsResponse, error) {
 	response, err := client.apiClient.GetInsightsWithResponse(ctx, ipAddress, params, reqEditors...)
 	if err != nil {
@@ -119,7 +129,12 @@ func (client *Client) GetInsights(ctx context.Context, ipAddress api.IPAddress, 
 
 func (client *Client) prepareRequest() api.RequestEditorFn {
 	return func(ctx context.Context, req *http.Request) error {
-		req.Header.Set("Accept", "application/json")
+		for _, requestEditor := range client.requestEditors {
+			err := requestEditor(ctx, req)
+			if err != nil {
+				return err
+			}
+		}
 		return nil
 	}
 }
