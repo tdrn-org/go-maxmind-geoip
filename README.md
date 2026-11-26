@@ -4,7 +4,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=tdrn-org_go-maxmind-geoip&metric=coverage)](https://sonarcloud.io/summary/new_code?id=tdrn-org_go-maxmind-geoip)
 
 ### MaxMind GeoIP web service
-The [MaxMind GeoIP web service]https://www.maxmind.com/en/geoip-api-web-services) provides a [REST API](https://github.com/maxmind/openapi) to query GeoIP information. This library provides the Go wrapper for this API.
+The [MaxMind GeoIP web service](https://www.maxmind.com/en/geoip-api-web-services) provides a [REST API](https://github.com/maxmind/openapi) to query GeoIP information. This library provides the Go wrapper for this API.
 
 ## License & Attribution
 This project is subject to the the MIT License (see the [LICENSE](./LICENSE) file for details).
