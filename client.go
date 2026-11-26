@@ -12,6 +12,7 @@ import (
 	"net/url"
 )
 
+// GeoIPEndpointURL is the Endpoint URL for the GeoIP web service.
 var GeoIPEndpointURL *url.URL = func() *url.URL {
 	url, err := url.Parse("https://geoip.maxmind.com/geoip/v2.1/")
 	if err != nil {
@@ -20,6 +21,7 @@ var GeoIPEndpointURL *url.URL = func() *url.URL {
 	return url
 }()
 
+// GeoLiteEndpointURL is the Endpoint URL for the GeoLite web service.
 var GeoLiteEndpointURL *url.URL = func() *url.URL {
 	url, err := url.Parse("https://geolite.info/geoip/v2.1/")
 	if err != nil {
@@ -29,7 +31,7 @@ var GeoLiteEndpointURL *url.URL = func() *url.URL {
 }()
 
 // NewClient creates a new Client instance using the given
-// connect URL as well as Client options.
+// endpoint URL as well as Client options.
 func NewClient(apiURL *url.URL, username, password string, options ...ClientOption) (*Client, error) {
 	prepareReq := func(ctx context.Context, req *http.Request) error {
 		req.SetBasicAuth(username, password)
