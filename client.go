@@ -12,22 +12,24 @@ import (
 	"net/url"
 )
 
+const endpointPath string = "/geoip/v2.1/"
+
 // GeoIPEndpointURL is the Endpoint URL for the GeoIP web service.
 var GeoIPEndpointURL *url.URL = func() *url.URL {
-	url, err := url.Parse("https://geoip.maxmind.com/geoip/v2.1/")
+	url, err := url.Parse("https://geoip.maxmind.com")
 	if err != nil {
 		panic(err)
 	}
-	return url
+	return url.JoinPath(endpointPath)
 }()
 
 // GeoLiteEndpointURL is the Endpoint URL for the GeoLite web service.
 var GeoLiteEndpointURL *url.URL = func() *url.URL {
-	url, err := url.Parse("https://geolite.info/geoip/v2.1/")
+	url, err := url.Parse("https://geolite.info")
 	if err != nil {
 		panic(err)
 	}
-	return url
+	return url.JoinPath(endpointPath)
 }()
 
 // NewClient creates a new Client instance using the given
