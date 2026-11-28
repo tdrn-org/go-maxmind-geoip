@@ -40,12 +40,12 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.12.1 h1:EuwCh5fleGS7H32xRwO3wRGT7DxrDhLAT6FF8MpWDWE=
 github.com/stretchr/testify v1.12.1/go.mod h1:MDEgiDPPsNp5cuIrHPPCyornHKgEVbtFUmoNlxoYthg=
-github.com/tdrn-org/go-oapi-tools v0.0.3 h1:7OHjtymuK3xPuTeYTdX6UqSVmY6Z17DTKZ/RPDty3Sk=
-github.com/tdrn-org/go-oapi-tools v0.0.3/go.mod h1:tObqPqgrmkzcJy7kN2mrtLM0KDYFUQHt7FxgSvmA4Us=
+github.com/tdrn-org/go-oapi-tools v0.0.8 h1:BMcsfoDVqhXEnY0gAFEz15QUYNkfwJFj6Qg6LNTl+R4=
+github.com/tdrn-org/go-oapi-tools v0.0.8/go.mod h1:Lx1JCd1r28LyQqQrnahJDMTTvPXiSivmatCLMW5Ra94=
 github.com/theory/jsonpath v0.12.3 h1:hRYcJGqnIetJJKJNS5yLLW0LDtY1kzo8S0zHAOTxUQs=
 github.com/theory/jsonpath v0.12.3/go.mod h1:fYTXa8TVFAnyGzDL5JyaFlfaHzKMm+2XfwK3rbEzTC4=
-go.yaml.in/yaml/v3 v3.0.5 h1:N6y/pJk8buWs9NY5ERU2HSMfm+IuD/OtfdAnq6kESPw=
-go.yaml.in/yaml/v3 v3.0.5/go.mod h1:HVTZu1O7/Vkt2N+BFy8Zza+lnLsABggaTM2ZpNIGuKg=
+go.yaml.in/yaml/v3 v3.0.6 h1:zcDfvjXEqTQmpjniUBLc91xYJMB2c4QOFxEF/LCEckM=
+go.yaml.in/yaml/v3 v3.0.6/go.mod h1:HVTZu1O7/Vkt2N+BFy8Zza+lnLsABggaTM2ZpNIGuKg=
 go.yaml.in/yaml/v4 v4.0.0 h1:/LG1pNO84Z4l603j/xMn69CcS5OYhMQ/f7l2LoQUGuw=
 go.yaml.in/yaml/v4 v4.0.0/go.mod h1:aZqd9kCMsGL7AuUv/m/PvWLdg5sjJsZ4oHDEnfPPfY0=
 golang.org/x/mod v0.43.0 h1:MFuq5J6s35W9D3IjkwyWc9vHh0nENOrt5K8Iof4ofmg=
