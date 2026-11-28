@@ -9,7 +9,7 @@ The [MaxMind GeoIP web service](https://www.maxmind.com/en/geoip-api-web-service
 ## License & Attribution
 This project is subject to the the MIT License (see the [LICENSE](./LICENSE) file for details).
 
-#### Third-Party Notices
+### Third-Party Notices
 This project is based on the official OpenAPI specification from **[MaxMind](https://github.com/maxmind/openapi)**.
 
 * **Component:** MaxMind web service OpenAPI Specification (`api/geoip.yaml`)
